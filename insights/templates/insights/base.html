@@ -1,4 +1,8 @@
+{% load static %}
 <html>
+<head>
+  <link rel="icon" href='{% static insights/favicon.ico %}' type="image/x-icon"/>
+  </head>
   <body>
     <h1>{{words}}</h1>
     {% if numbers > 1 %}
