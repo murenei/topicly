@@ -11,8 +11,9 @@ cymem==1.31.2
 cytoolz==0.8.2
 dill==0.2.7.1
 Django==1.11.5
+en-core-web-sm==1.2.0
 ftfy==4.4.3
-gunicorn==19.7.1
+gunicorn==19.8.1
 html5lib==0.999999999
 hyperlink==17.3.1
 idna==2.6
@@ -51,5 +52,6 @@ virtualenv-clone==0.3.0
 w3lib==1.18.0
 wcwidth==0.1.7
 webencodings==0.5.1
+whitenoise==3.3.1
 wrapt==1.10.11
 zope.interface==4.4.3

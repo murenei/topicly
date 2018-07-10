@@ -21,4 +21,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^data/$', views.get_data, name='get_data'),
     url(r'^(?P<random_nr>[0-9]+)/$', views.insights, name='insights'),
+    url(r'^api/data/$', views.GetData.as_view(), name='data_api'),
+    url(r'^bokeh/$', views.bokeh, name='bokeh'),
+    url(r'^cyto/$', views.cyto, name='cyto'),
 ]

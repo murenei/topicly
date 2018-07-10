@@ -1,0 +1,24 @@
+{% extends "insights/base.html" %}
+
+<!-- CONTENT BLOCK -->
+{% block content %}
+<h1 class="cover-heading">This is the home page</h1>
+<p class="lead">Here's some stuff !!*@&#%@*@^*@</p>
+<p class="lead">
+  <a href="#" class="btn btn-lg btn-secondary" id="walkthrough-2">Learn more</a>
+</p>
+<p>$$- 10 x^{2} = 9 x^{2} - 6 x - 16$$</p>
+<p>
+  When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+  $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+</p>
+{% endblock content %}
+<!-- END CONTENT BLOCK -->
+
+{% block js_plugins %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript" async></script>
+{% endblock js_plugins %}
+
+{% block js_scripts %}
+
+{% endblock js_scripts %}

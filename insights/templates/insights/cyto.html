@@ -1,0 +1,94 @@
+{% extends "insights/base.html" %}
+
+{% block styles %}
+<style>
+#cy {
+  width: 600px;
+  height: 600px;
+  display: block;
+  /*border-style: solid;
+  border-width: 5px;
+  border-color: blue;*/
+  border-radius: 3px;
+  border: 5px solid blue;
+}
+</style>
+{% endblock styles %}
+
+
+{% block content %}
+<div id="cy" ></div>
+{% endblock content %}
+
+{% block js_plugins %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.13/cytoscape.min.js"></script>
+{% endblock js_plugins %}
+
+{% block js_scripts %}
+<script>
+    console.log({{edges}})
+    console.log({{edges.0}})
+    var cy = cytoscape({
+
+      container: document.getElementById('cy'), // container to render in
+
+      // elements: [ // list of graph elements to start with
+      //   { // node a
+      //     data: { id: 'a' }
+      //   },
+      //   { // node b
+      //     data: { id: 'b' }
+      //   },
+      //   { // edge ab
+      //     data: { id: 'ab', source: 'a', target: 'b' }
+      //   }
+      // ],
+
+      elements: [
+        {% for node in nodes %}
+            {
+                data: { id: {{node}} }
+            },
+        {% endfor %}
+
+        {% for x, y in edges %}
+            {
+                data: 
+                    { 
+                        id: '{{x}},{{y}}', 
+                        source: {{ x }}, 
+                        target: {{ y }}, 
+                    }
+            },
+        {% endfor %}
+        ],
+
+      style: [ // the stylesheet for the graph
+        {
+          selector: 'node',
+          style: {
+            'background-color': '#666',
+            'label': 'data(id)'
+          }
+        },
+
+        {
+          selector: 'edge',
+          style: {
+            'width': 3,
+            'line-color': '#ccc',
+            'target-arrow-color': '#ccc',
+            'target-arrow-shape': 'triangle'
+          }
+        }
+      ],
+
+      layout: {
+        name: 'circle',
+        rows: 1
+      }
+
+    });
+</script>
+{% endblock js_scripts %}
+

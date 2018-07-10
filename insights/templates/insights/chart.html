@@ -1,0 +1,106 @@
+{% load static %}
+<html>
+<head>
+  <link rel="icon" href='{% static favicon.ico %}' type="image/x-icon"/>
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- PLOTLY.JS -->
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+   <!-- CHART.JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var endpoint='/insights/api/data/'
+      var defaultData=[]
+      $.ajax({
+        method: 'GET',
+        url: endpoint,
+        success: function(data){
+          console.log(data)
+          defaultData=data.default
+          setChart()
+        },
+        error: function(error_data){
+          console.log("error")
+          console.log(error_data)
+        }
+      })
+
+      function setChart(){
+        var ctx = document.getElementById("myChart").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: defaultData,
+                  }]
+                }
+              })
+      }
+    </script>
+    <p>
+      Charting experiment
+    </p>
+    <div id="tester" style="width:600px;height:250px;"></div>
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <script>
+      TESTER = document.getElementById('tester');
+      Plotly.plot( TESTER, [{
+      x: [1, 2, 3, 4, 5],
+      y: [1, 2, 4, 8, 16] }], {
+      margin: { t: 0 } } );
+  </script>
+
+
+
+  <!-- CHART.JS SCRIPT TO POPULATE CANVAS CHART ELEMENT -->
+ <!--  <script>
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [{
+              label: '# of Votes',
+              data: data.default,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255,99,132,1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+  </script> -->
+  <script>
+    function random_number(p1, p2){
+      return p1 * p2
+    }
+  </script>
+  </body>
+</html>
