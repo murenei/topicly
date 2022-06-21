@@ -20,7 +20,7 @@ idna==2.6
 incremental==17.5.0
 lxml==4.0.0
 murmurhash==0.26.4
-numpy==1.13.3
+numpy==1.22.0
 parsel==1.2.0
 pathlib==1.0.1
 pipenv==2018.5.18
